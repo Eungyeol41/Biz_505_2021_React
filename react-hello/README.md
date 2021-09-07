@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Hello Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React : 컴포넌트 기반
 
-## Available Scripts
+- JS 파일을 만들어서 마치 하나의 객체처럼 취급하고 서로 결합하여 하나의 프로젝트를 완성한다.
+- 생성하는 JS 파일 == 컴포넌트 == JS로 만든 함수들
+- JS 코드를 ES6+로 확장하고 React 방식으로 더 확장하여 작성한다.
+- 일반적인 JS 코드보다 좀 더 확장된 개념이 있다.
 
-In the project directory, you can run:
+## 생성된 프로젝트 : 가상 DOM 방식으로 작동
 
-### `yarn start`
+- 내부에서 실제DOM(화면에서 보고있는 DOM)과 가상DOM(background에 있는 가상 DOM)이 서로 연동되어 화면 UI를 구성한다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 변수, 객체 등등을 "상태(stat)"라는 개념으로 취급
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 만약 현재 보고있는 화면에서 일부 데이터가 변경된다면.. 화면 전체를 다시 Reloading 또는 ReRendering 하지 않고 데이터가 변화되어 UI가 변경되는 부분만 다시 그리는 방식
+- 상태 : 이전 화면(보고있던 화면의)에서 새롭게 화면을 그릴 때 참조되는 대상
+- React Rendering 엔진은 항상 "상태(stat)"를 감시하고 있다가 변화가 발생하면 자동(자체)적으로 UI를 부분 Rendering한다.
+- "상태"의 변화가 발생하면 가상DOM에서 화면을 그리고 실제DOM과 비교하여 바뀐 부분만 다시 보여주는 형식으로 진행된다.
 
-### `yarn test`
+## 변수, 객체 값의 변화시키기
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 일반적인 코딩에서는 선언된 변수(객체)에 새로운 값을 할당할 때 '변수 = 값' 방식으로 코딩한다.
+- 하지만, React에서는 직접 변수나 객체에 값을 할당하지 않는다.
+- 상태를 변화시키는 별도의 함수( setStat() )를 사용하여 값을 변화시킨다.
 
-### `yarn build`
+## 시작점 컴포넌트
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- src/App.js 파일이 시작점 컴포넌트가 된다.
+- 특별한 경우가 아니면 src/index.js는 편집하지 않는다.
