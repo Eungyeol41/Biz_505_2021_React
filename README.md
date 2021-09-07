@@ -1,6 +1,6 @@
 # React Project 2021
 
-- 2021. 9. 06
+- 2021.09.06 시작
 
 ## React Project를 만들기 위한 준비 작업
 
