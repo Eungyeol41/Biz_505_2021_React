@@ -21,7 +21,7 @@ function About() {
       </div>
       <div>
         <label htmlFor="">주요특기</label>
-        <span>빠른 코딩, 안전한코딩, 클린코딩</span>
+        <span>빠른 코딩, 안전한 코딩, 클린코딩</span>
       </div>
       <div>
         <label htmlFor="">구현기술</label>
