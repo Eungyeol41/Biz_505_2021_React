@@ -6,6 +6,12 @@
 
 .App {
   text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  height: 100vh;
 }
 
 .App-header {
@@ -17,4 +23,14 @@
   font-size: calc(10px + 2vmin);
   color: white;
   text-shadow: 2px 2px 2px black;
+}
+
+section.main_section {
+  flex: 1;
+}
+
+footer {
+  background-color: #282c34;
+  color: white;
+  padding: 0.5rem;
 }

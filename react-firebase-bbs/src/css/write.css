@@ -7,6 +7,8 @@ input {
 
 div.button {
   width: 70%;
+  margin: 0 auto;
+  text-align: left;
 }
 
 button.btn_save {
