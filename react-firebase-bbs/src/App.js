@@ -2,7 +2,7 @@ import "./App.css";
 import "./css/nav.css";
 
 import MainNav from "./comps/MainNav";
-import { Board, Write, Login, Join } from "./comps";
+import Board from "./comps/Board";
 
 import { BrowserRouter, Route } from "react-router-dom";
 
