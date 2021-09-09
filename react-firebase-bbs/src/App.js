@@ -5,16 +5,13 @@ import MainNav from "./comps/MainNav";
 import Board from "./comps/Board";
 
 import { BrowserRouter, Route } from "react-router-dom";
+import Header from "./comps/Header";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header">
-          <h1>REACT BBS 2021</h1>
-          <h3>React & Firebase BBS</h3>
-        </header>
-
+        <Header />
         <MainNav />
         <Route path="/" component={Board} exact />
       </div>
