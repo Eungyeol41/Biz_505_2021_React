@@ -9,7 +9,7 @@ function MainNav() {
     <div>
       <ul className="main_nav">
         <li>
-          <NavLink to="/" activeStyle={activeNavStyle}>
+          <NavLink to="/" activeStyle={activeNavStyle} exact>
             HOME
           </NavLink>
         </li>
