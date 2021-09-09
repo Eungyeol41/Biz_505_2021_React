@@ -1,0 +1,14 @@
+ul.main_nav {
+  margin-top: 5px;
+  display: flex;
+  background-color: #282c34;
+  color: white;
+  list-style: none;
+}
+
+ul.main_nav a {
+  display: inline-block;
+  color: inherit;
+  padding: 1rem;
+  text-decoration: none;
+}
