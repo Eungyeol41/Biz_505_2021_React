@@ -2,7 +2,7 @@ import "./App.css";
 import "./css/nav.css";
 
 import MainNav from "./comps/MainNav";
-import Board from "./comps/Board";
+import Main from "./comps/BBsMain";
 
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./comps/Header";
@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <Header />
         <MainNav />
-        <Route path="/" component={Board} exact />
+        <Route path="/" component={Main} exact />
       </div>
     </BrowserRouter>
   );

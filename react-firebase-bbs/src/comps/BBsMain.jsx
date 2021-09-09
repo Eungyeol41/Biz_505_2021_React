@@ -1,7 +1,7 @@
 import React from "react";
 import "../css/board.css";
 
-function Board() {
+function BBsMain() {
   return (
     <div>
       <table>
@@ -22,4 +22,4 @@ function Board() {
   );
 }
 
-export default Board;
+export default BBsMain;
