@@ -1,0 +1,17 @@
+input {
+  width: 70%;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid #282c34;
+}
+
+div.button {
+  width: 70%;
+}
+
+button.btn_save {
+  border: none;
+  padding: 8px 20px;
+  margin-top: 5px;
+  cursor: pointer;
+}
