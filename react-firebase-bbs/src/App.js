@@ -1,13 +1,9 @@
 import "./App.css";
 import "./css/nav.css";
 
-import MainNav from "./comps/MainNav";
-import Main from "./comps/BBsMain";
-import Write from "./comps/BBsWrite";
+import { BBsMain, BBsWrite, BBsDetail, MainNav, Header, Footer } from "./comps";
 
-import { BrowserRouter, Route } from "react-router-dom";
-import Header from "./comps/Header";
-import Footer from "./comps/Footer";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -16,9 +12,14 @@ function App() {
         <Header />
 
         <MainNav />
-        <Route path="/" component={Main} exact />
-        <Route path="/write" component={Write} exact />
+        <Route path="/" component={BBsMain} exact />
+        <Route path="/write" component={BBsWrite} exact />
+        <Switch>
+          <Route path="/detail/:id" component={BBsDetail} exact />
+          <Route path="/detail" component={BBsDetail} exact />
+        </Switch>
         <section className="main_section"></section>
+
         <Footer />
       </div>
     </BrowserRouter>

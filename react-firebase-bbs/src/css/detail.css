@@ -1,0 +1,22 @@
+div.div_2 {
+  display: flex;
+  width: 60%;
+  margin: 10px auto;
+}
+
+span.detail_span {
+  flex: 1;
+  background-color: #ccc;
+  margin-right: 5px;
+}
+
+input.detail_input {
+  flex: 3;
+  border: none;
+  background-color: #ddd;
+  pointer-events: none;
+}
+
+/* input.detail_input:focus {
+  border: none;
+} */
