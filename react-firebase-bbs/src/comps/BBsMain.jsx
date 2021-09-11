@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../css/board.css";
 
 function BBsMain() {
   const router = useHistory();
+  const { vvsData, setBBSData } = useState([]);
+  const firebaseFetch = async () => {};
   return (
     <div>
       <table>
