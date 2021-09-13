@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "../css/BBs.css";
 import { fireStore } from "../config/BBSConfig.js";
 import { useHistory } from "react-router-dom";
@@ -51,7 +51,8 @@ function BBsMain() {
     setBBsData(bbsList);
   };
 
-  useEffect(firebaseFetch, []);
+  const fetchCallback = useCallback(firebaseFetch, []);
+  useEffect(fetchCallback, [fetchCallback]);
 
   const bbsBody = bbsData.map((bbs) => {
     return (
@@ -60,9 +61,9 @@ function BBsMain() {
         data-id={bbs.id}
         onClick={(e) => {
           const id = e.target.closest("TR").dataset.id;
-          alert("안녕 " + id);
-          // write URL에 id값을 가지고 redirect 수행하라
-          router.push(`/write/${id}`);
+          //   alert("안녕 " + id);
+          // detail URL에 id값을 가지고 redirect 수행하라
+          router.push(`/detail/${id}`);
         }}
       >
         <td>{bbs.b_date}</td>

@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { BBsMain, BBsWrite, Footer, Header, MainNav } from "./comps";
+import { BBsMain, BBsWrite, Footer, Header, MainNav, BBsDetail } from "./comps";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
             {/* 순서가 바뀌지 않아야 함..! */}
             <Route exact path="/write/:id" component={BBsWrite} />
             <Route exact path="/write" component={BBsWrite} />
+            <Route exact path="/detail/:id" component={BBsDetail} />
           </Switch>
         </section>
         <Footer />

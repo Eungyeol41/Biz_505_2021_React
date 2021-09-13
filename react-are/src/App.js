@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import "./App.css";
 import Detail from "./comps/Detail";
+import Hashtag from "./comps/Hashtag";
 
 function App() {
   return (
@@ -8,7 +10,7 @@ function App() {
         <h2>BOX ATELIER</h2>
         <p>With. RE;CODE</p>
       </header>
-      <Detail />
+      <Hashtag />
     </div>
   );
 }
