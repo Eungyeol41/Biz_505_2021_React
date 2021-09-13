@@ -12,7 +12,9 @@ function App() {
   };
   return (
     <div className="App">
-      <header className="App-header" style={backgroundStyle}></header>
+      <header className="App-header" style={backgroundStyle}>
+        <h1>My BUCKETLIST</h1>
+      </header>
       <section className="w3-container w3-margin">
         <BuckMain />
       </section>

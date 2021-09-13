@@ -30,6 +30,13 @@
   color: white;
 }
 
+h1 {
+  text-shadow: 2px 2px 2px black;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: white;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -45,6 +52,7 @@
 
 td {
   cursor: pointer;
+  text-align: center;
 }
 
 footer {

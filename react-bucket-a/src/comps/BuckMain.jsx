@@ -49,11 +49,49 @@ function BuckMain() {
     });
     setBuckList(_bucketList);
   };
+
+  // 리스트에서 input box에 버킷을 변경한 후 Enter를 누르면 실행할 함수
+  const bucket_update = (id, title) => {
+    const _bucketList = bucketList.map((bucket) => {
+      if (bucket.b_id === id) {
+        return { ...bucket, b_title: title };
+      } else {
+        return bucket;
+      }
+    });
+    // 원래의 list를 새로운 list로 바꾸기
+    setBuckList(_bucketList);
+  };
+  const bucket_complete = (id) => {
+    bucketList.map((bucket) => {
+      if (bucket.b_id === id) {
+        return {
+          ...bucket,
+          b_end_date: moment().format("YYYY[-]MM[-]DD HH:mm:ss"),
+          b_end_check: true,
+        };
+      } else {
+        return bucket;
+      }
+    });
+  };
+
+  const args = {
+    bucketList: bucketList,
+    flag_change: flag_change,
+    bucket_update: bucket_update,
+    bucket_complete: bucket_complete,
+  };
   return (
     <div className="w3-container-fluid">
       <BuckInput bucket_insert={bucket_insert} />
       {/* BuckList 컴포넌트에 bucketList 상태(변수) 전달하기 */}
-      <BuckList bucketList={bucketList} flag_change={flag_change} />
+      <BuckList
+        args={args}
+        // bucketList={bucketList}
+        // flag_change={flag_change}
+        // bucket_update={bucket_update}
+      />
     </div>
   );
 }
