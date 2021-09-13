@@ -4,10 +4,7 @@ import "../css/bucketlist.css";
 function BucketList() {
   return (
     <div className="bucketlist">
-      <input
-        className="bucket_input"
-        placeholder="버킷리스트에 추가할 내용을 입력해주세요 ㅇㅂㅇ"
-      ></input>
+      <input className="bucket_input" placeholder="버킷리스트에 추가할 내용을 입력해주세요"></input>
       <table className="bucket_table">
         <thead>
           <tr>
@@ -23,7 +20,7 @@ function BucketList() {
             <th>일반</th>
             <th>2021-09-13</th>
             <th>기능사 합격</th>
-            <th>2021-10-14</th>
+            <th>2021-10-09</th>
             <th>
               <input type="checkbox"></input>
             </th>
