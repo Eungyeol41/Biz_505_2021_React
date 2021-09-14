@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import BuckInput from "./BuckInput";
 import BuckList from "./BuckList";
 
@@ -8,13 +8,15 @@ import moment from "moment";
 function BuckMain() {
   const [bucketList, setBuckList] = useState([]);
 
-  const bucketFetch = async () => {
-    const bucket = fetch("http://localhost:5000/data");
-    setBuckList([...bucketList, bucket]);
-  };
-  useEffect(bucketFetch, []);
+  const bucketFetch = useCallback(async () => {
+    const res = await fetch("http://localhost:5000/data");
+    const bucketList = await res.json();
+    // console.log(bucket);
+    await setBuckList(bucketList);
+  }, []);
+  useEffect(bucketFetch, [bucketFetch]);
 
-  const bucket_insert = (bucket_text) => {
+  const bucket_insert = async (bucket_text) => {
     const bucket = {
       b_id: uuid(),
       b_flag: 0,
@@ -24,7 +26,17 @@ function BuckMain() {
       b_end_check: false,
       b_cancel: false,
     };
-    setBuckList([...bucketList, bucket]);
+    await setBuckList([...bucketList, bucket]);
+
+    const fetch_option = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(bucket),
+    };
+    await fetch("http://localhost:5000/insert", fetch_option);
+    await bucketFetch();
   };
 
   const flag_change = (id) => {
