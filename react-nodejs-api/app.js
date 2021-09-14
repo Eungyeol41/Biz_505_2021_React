@@ -3,6 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+
+/**
+ * CROSS-ORIGIN RESOURCE SHARING
+ * 서로 다른 서버 간에 데이터를 주고받을 때 보안 문제로 인해 발생할 수 있는 ISSUE
+ *
+ * XSS 공격
+ *
+ */
 const cors = require("cors");
 const mongoose = require("mongoose");
 
@@ -27,7 +35,18 @@ var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 
 var app = express();
-app.use(cors());
+
+// CORS를 허용할 ORIGIN LIST
+const whiteList = ["http://localhost:5000", "http://localhost:3000", "https://callor.com:15500"];
+const corsOption = {
+  origin: (origin, callback) => {
+    // whiteList 중에 요청한 주소가 있으면
+    const isWhiteList = whiteList.indexOf(origin) !== -1;
+    callback(null, isWhiteList);
+  },
+  Credentials: true,
+};
+app.use(cors(corsOption));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
