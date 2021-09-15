@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const BUCKET = require("../models/bucket");
+
 /**
  * RESTFul
  * 클라이언트에서 요청을 할 때 할 일을 프로토콜 method로 분리하기
@@ -32,24 +34,24 @@ const router = express.Router();
  * 			router.delete("/book/delete")
  * 	라고 요청할 수 있다.
  */
-const retData = [
-  {
-    b_id: "01",
-    b_title: "시",
-    b_start_date: "2021-09-15",
-    b_start_time: "10:45:58",
-    b_end_check: "",
-    b_cancel: "",
-  },
-  {
-    b_id: "02",
-    b_title: "작",
-    b_start_date: "2021-09-15",
-    b_start_time: "10:46:58",
-    b_end_check: "",
-    b_cancel: "",
-  },
-];
+// const retData = [
+//   {
+//     b_id: "01",
+//     b_title: "시",
+//     b_start_date: "2021-09-15",
+//     b_start_time: "10:45:58",
+//     b_end_check: "",
+//     b_cancel: "",
+//   },
+//   {
+//     b_id: "02",
+//     b_title: "작",
+//     b_start_date: "2021-09-15",
+//     b_start_time: "10:46:58",
+//     b_end_check: "",
+//     b_cancel: "",
+//   },
+// ];
 
 /**
  * POST로 받는 데이터는 주로 form에 담긴 데이터
@@ -63,22 +65,51 @@ router.post("/insert", (req, res) => {
   res.end("--- THE END ---");
 });
 
-router.post("/bucket", (req, res) => {
+router.post("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 추가하기");
+  const result = await BUCKET.create(body);
+  console.log("데이터 추가하기", result);
   console.log(body);
-  res.send("끄<ㅌ>");
+  //   res.send("끄<ㅌ>");
+  res.json({ result: "OK" });
 });
 
-router.put("/bucket", (req, res) => {
+router.put("/bucket", async (req, res) => {
   const body = req.body;
-  console.log("데이터 업데이트 하기");
+  await BUCKET.findOneAndUpdate({ b_id: body.b_id }, body);
+  res.json({ result: "OK" });
+});
+
+/**
+ * 3-Tier ( 3layer Application )
+ * react -> node -> atlas
+ * atlas -> node -> react
+ *
+ * findOne()이 return하는 doc가 성능상의 문제로 null값이 되어
+ * 		overwrite()가 비정상적으로 작동되므로 사용하지 말자!
+ */
+// ORM 방식의 데이터 핸들링
+router.put("/bucket/over", async (req, res) => {
+  const body = req.body;
+  // DB에서 b_id값이 body.b_id와 같은 데이터를 SELECT하기
+  const doc = await BUCKET.findOne({ b_id: body.b_id });
+  console.log(doc);
+  // select한 model 객체의 모든 요소 데이터를 body로 받은 데이터로 변경하라
+  //   doc = { ...doc, b_id: body.b_id, b_title: body.b_title };
+  await doc.overwrite(body);
+  // 변경된 데이터를 DB Update하라
+  await doc.save();
+
+  await console.log("데이터 업데이트 하기");
+
+  await console.table(body);
 });
 
 // localhost:3000/api/get
-router.get("/get", (req, res) => {
+router.get("/get", async (req, res) => {
+  const bucketlists = await BUCKET.find({});
   console.log("전체 리스트 요청하기");
-  res.json(retData);
+  res.json(bucketlists);
 });
 
 // router.get("/getlist", (req, res) => {

@@ -6,10 +6,13 @@ import uuid from "react-uuid";
 import moment from "moment";
 
 function BuckMain() {
+  // 버킷리스트를 담을 배열
   const [bucketList, setBuckList] = useState([]);
+  // DB에 UPDATE 할 state
+  const [saveBucket, setSaveBucket] = useState([]);
 
   const bucketFetch = useCallback(async () => {
-    const res = await fetch("http://localhost:5000/data");
+    const res = await fetch("http://localhost:5000/api/get");
     const bucketList = await res.json();
     // console.log(bucket);
     await setBuckList(bucketList);
@@ -26,6 +29,8 @@ function BuckMain() {
       b_end_check: false,
       b_cancel: false,
     };
+    // 화면에 보여질 리스트에 추가하기
+    // 원래 있던 bucketlist에 새로운 bucket 추가하기
     await setBuckList([...bucketList, bucket]);
 
     const fetch_option = {
@@ -35,14 +40,29 @@ function BuckMain() {
       },
       body: JSON.stringify(bucket),
     };
-    await fetch("http://localhost:5000/insert", fetch_option);
-    await bucketFetch();
+    await fetch("http://localhost:5000/api/bucket", fetch_option);
+    // await bucketFetch();
   };
+
+  // saveBucket에 변화가 생기면 putBucket이 감지를 한다.
+  const putBucket = async () => {
+    console.log(saveBucket);
+    const putFetchOption = {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(saveBucket),
+    };
+    const result = await fetch("http://localhost:5000/api/bucket", putFetchOption);
+    console.log(result.json());
+  };
+  useEffect(putBucket, [saveBucket]);
 
   const flag_change = (id) => {
     const _bucketList = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return { ...bucket, b_flag: bucket.b_flag + 1 };
+        const _temp = { ...bucket, b_flag: bucket.b_flag + 1 };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
@@ -50,49 +70,29 @@ function BuckMain() {
     setBuckList(_bucketList);
   };
 
-  // 리스트에서 input box에 버킷을 변경한 후 Enter를 누르면 실행할 함수
   const bucket_update = (id, title) => {
     const _bucketList = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return { ...bucket, b_title: title };
+        const _temp = { ...bucket, b_title: title };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
     });
-    // 원래의 list를 새로운 list로 바꾸기
     setBuckList(_bucketList);
   };
 
-  /**
-   * JS에서
-   * 	문자열 변수에 담긴 값이 ""이거나 null이거나 undefined이거나
-   * 	숫자형 변수에 담긴 값이 0이거나 NaN 등 이러한 값이면
-   *
-   * 변수와 함께 논리연산자가 묶였을 때
-   * Ex )
-   * let 변수 = ""
-   * 변수 || 와 같은 코드를 만나면 이 결과는 false가 된다
-   *
-   * 변수 = 변수 || "대한민국" 이라는 코드를 작성하면
-   * 1. 원래 변수에 ""이 담겨있으므로 '변수 ||' 은 false가 되고
-   * 2. OR 연산을 수행하려고 시도한다.
-   * 3. 양쪽 값이 모두 true일 때만 true가 되고 변수 || 연산은 false이므로
-   * 	이후에 나타나는 코드를 수행하여 좌항의 변수에 대한민국 문자열을 담게 된다.
-   *
-   * 변수 = "" || "우리나라" 와 같은 코드를 만나게 되면
-   * 	변수에는 '우리나라'라는 문자열이 담기게 된다.
-   *
-   * 변수 = "대한민국" || "우리나라" 와 같은 코드를 만나면 앞단에서 이미 true 연산이 되고
-   * 	변수에는 '대한민국' 이라는 문자열이 담기게 된다.
-   */
   const bucket_complete = (id) => {
     const _complete = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return {
+        const _temp = {
           ...bucket,
           b_end_date: moment().format("YYYY[-]MM[-]DD HH:mm:ss"),
           b_end_check: !bucket.b_end_check,
         };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }
@@ -104,10 +104,9 @@ function BuckMain() {
   const bucket_cancel = (id) => {
     const _cancel = bucketList.map((bucket) => {
       if (bucket.b_id === id) {
-        return {
-          ...bucket,
-          b_cancel: !bucket.b_cancel,
-        };
+        const _temp = { ...bucket, b_cancel: !bucket.b_cancel };
+        setSaveBucket(_temp);
+        return _temp;
       } else {
         return bucket;
       }

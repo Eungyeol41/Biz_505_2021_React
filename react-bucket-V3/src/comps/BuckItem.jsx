@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useState } from "react";
 
 const b_flag_text = ["일반", "중요", "매우 중요", "긴급"];
@@ -19,7 +20,9 @@ function BuckItem({ args, bucket }) {
     // TR은 currentTarget이 TD는 target이 된다.
     const itemTr = e.currentTarget;
     const b_id = itemTr.dataset.id;
+
     const itemTd = e.target;
+    // b_id = e.target.closest("TR").dataset.id;
 
     if (itemTd.tagName === "TD") {
       const className = itemTd.className;

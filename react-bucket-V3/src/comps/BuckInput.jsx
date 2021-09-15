@@ -7,6 +7,7 @@ function BuckInput(props) {
       const bucket = e.target.value;
       // 전달받은 bucket_insert() 함수에 input에 입력된 bucket text를 전달하기
       props.bucket_insert(bucket);
+      e.target.value = ""; // 입력 후 Enter -> 입력박스 지워줌.
     }
   };
   return (
