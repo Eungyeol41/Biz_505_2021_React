@@ -4,7 +4,9 @@ import Board from "./comps/Board";
 function App() {
   return (
     <div className="App">
-      <Board />
+      <header className="App-header">
+        <Board />
+      </header>
     </div>
   );
 }

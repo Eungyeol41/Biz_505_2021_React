@@ -51,7 +51,8 @@ const arrayEx = () => {
 
 // const RenderSquare = (props, { squares }) => {
 // 	const {squares} = props;
-const RenderSquare = ({ squares, onButtonClick }) => {
+let count = 0; // 위치 의문
+const RenderSquare = ({ squares, changeSquares }) => {
   // const squares = props.squares;
   const arrayBox = [
     [0, 1, 2],
@@ -59,19 +60,29 @@ const RenderSquare = ({ squares, onButtonClick }) => {
     [6, 7, 8],
   ];
 
+  const onButtonClick = (e) => {
+    const index = e.target.dataset.id;
+    if (squares[index] != null) {
+      return;
+    }
+    count++;
+
+    changeSquares(index, count);
+  };
+
   let index = 0;
   // arrayBox는 사용하기 전 이미 선언이 되어있어야 한다.
   const buttons = arrayBox.map((sub_box) => {
     const button_cols = sub_box.map(() => {
       // 한 라인의 button 만들기 ( 9번 반복 )
       return (
-        <button data-index={index} onClick={onButtonClick}>
+        <button data-id={index} onClick={onButtonClick}>
           {squares[index++]}
         </button>
       ); // 9번 반복
     }); // 3개 만들어짐
     // 각 라인의 컴포넌트 만들기
-    return <div className="box_row">{button_cols}</div>;
+    return <div className="row_box">{button_cols}</div>;
   });
   return buttons;
 };
