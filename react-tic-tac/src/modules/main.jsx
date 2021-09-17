@@ -51,7 +51,8 @@ const arrayEx = () => {
 
 // const RenderSquare = (props, { squares }) => {
 // 	const {squares} = props;
-let count = 0; // 위치 의문
+// let count = 0;
+
 const RenderSquare = ({ squares, changeSquares }) => {
   // const squares = props.squares;
   const arrayBox = [
@@ -62,12 +63,16 @@ const RenderSquare = ({ squares, changeSquares }) => {
 
   const onButtonClick = (e) => {
     const index = e.target.dataset.id;
-    if (squares[index] != null) {
-      return;
-    }
-    count++;
 
-    changeSquares(index, count);
+    // if(null) return;
+    // null, undefined 는 if를 만났을때 무조건 false이기 때문에
+    // if (squares[index] != null) {
+    //   return;
+    // } --> squares[index]가 null이 아니면
+    // 위와 같은 코드로 안 쓰고 그냥 아래처럼 써도 상관없다.!
+    // squares[index]가 있으면 return
+    if (squares[index]) return;
+    changeSquares(index);
   };
 
   let index = 0;

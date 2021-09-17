@@ -3,12 +3,18 @@ import { RenderSquare } from "../modules/main";
 
 function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
+  const [oxFlag, setOxFlag] = useState(true);
 
   // squares 배열의 index번째 요소의 값을 변경하려고 한다.
   // 매개변수로 index 값
   const changeSquares = (index) => {
     // squares[index] = "B"; --> 절대 사용하면 안 되는 코드임!
 
+    // if(문자열 변수) : 문자열변수값이 null, undefined, ""이면 무조건 false
+    // 그게 아니면 true
+    // 이미 값이 들어있을 때 다른 값으로 변하지 않게 하기
+    // squares[index]에 어떤 값(문자열, O, X)이 담겨있으면 더 이상 진행 금지
+    if (squares[index]) return;
     /**
      * const _squares = squares;
      *
@@ -21,8 +27,9 @@ function Board() {
      * 배열을 복제할 때는 반드시 전개연산자로 수행한다.
      */
     const _squares = [...squares]; // 복제
-    _squares[index] = _squares[index] === "A" ? "B" : "A"; // 복제된 배열 요소 변경
+    _squares[index] = oxFlag ? "O" : "X"; // 복제된 배열 요소 변경
     setSquares(_squares); // 복제된 배열을 원래 배열과 교체
+    setOxFlag(!oxFlag); // true, false 역전시키기 ==> switch 변수
   };
 
   // RenderSquare를 바닐라 함수로 불러 사용하는 방법
