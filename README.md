@@ -8,10 +8,14 @@
 
 - vsCode에서 터미널을 열고 관련 도구 설치하기
 
-* project 생성도구 : npm install -g create-react-app  
+* project 생성도구
+  > npm install -g create-react-app
+
   설치되어 있더라도 다시 한 번 해서 업데이트 해주기  
   가급적 생성도구는 프로젝트를 작성하는 시점에 다시 설치하기!
-* react dependency 관리 도구 : npm install -g yarn
+* react dependency 관리 도구
+
+  > npm install -g yarn
 
 ## 새로운 프로젝트를 생성하기
 
