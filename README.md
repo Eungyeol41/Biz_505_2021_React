@@ -16,6 +16,7 @@
 * react dependency 관리 도구
 
   > npm install -g yarn
+  > 변경 완료?
 
 ## 새로운 프로젝트를 생성하기
 
