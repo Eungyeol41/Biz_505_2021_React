@@ -1,3 +1,4 @@
+let count = 0;
 const RenderSquare = ({ squares, changeSquares }) => {
   const arrayBox = [
     [0, 1, 2],
@@ -9,7 +10,8 @@ const RenderSquare = ({ squares, changeSquares }) => {
     const index = e.target.dataset.id;
 
     if (squares[index]) return;
-    changeSquares(index);
+    count++;
+    changeSquares(index, count);
   };
 
   let index = 0;

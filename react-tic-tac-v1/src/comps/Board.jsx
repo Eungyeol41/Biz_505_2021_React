@@ -5,8 +5,12 @@ function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [oxFlag, setOxFlag] = useState(true);
 
-  const changeSquares = (index) => {
+  const changeSquares = (index, count) => {
     if (calcWinner(squares)) return;
+
+    if (count == 9) {
+      alert("Draw!!");
+    }
 
     if (squares[index]) return;
     const _squares = [...squares];
