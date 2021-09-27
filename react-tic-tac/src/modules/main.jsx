@@ -92,4 +92,130 @@ const RenderSquare = ({ squares, changeSquares }) => {
   return buttons;
 };
 
-export { RenderSquare };
+/**
+ * index 값
+ *
+ * x+1
+ * - x = 0, 3, 6
+ * 0, 1, 2
+ * 3, 4, 5
+ * 6, 7, 8
+ *
+ * x+3
+ * - x = 0, 1, 2
+ * 0, 3, 6
+ * 1, 4, 7
+ * 2, 5, 8
+ *
+ * x+4
+ * - x = 0
+ * 0, 4, 8
+ *
+ * x+2
+ * - x = 2
+ * 2, 4, 6
+ */
+
+// const calcWinner = (squares) => {
+//   if (i == 0 || i == 3 || i == 6) {
+//     if (squares[i] && squares[i] === squares[i + 1] && squares[i] === squares[i + 2]) {
+//       return squares[i];
+//     }
+//   }
+//     } else if (squares[i] && squares[i] === squares[i + 3] && squares[i + 3] === squares[i + 6]) {
+//       return squares[i];
+//     } else if (squares[i] && squares[i] === squares[i + 4] && squares[i + 4] === squares[i + 8]) {
+//       return squares[i];
+//     } else if (squares[i] && squares[i] === squares[i + 2] && squares[i + 2] === squares[i + 4]) {
+//       return squares[i];
+//     }
+// };
+
+// let winner = "";
+// const calcWinner = (squares) => {
+//   const win = [
+//     [0, 1, 2],
+//     [0, 3, 6],
+//     [0, 4, 8],
+//     [1, 4, 7],
+//     [2, 4, 6],
+//     [2, 5, 8],
+//     [3, 4, 5],
+//     [6, 7, 8],
+//   ];
+
+//   win.forEach((row_win) => {
+//     if (
+//       squares[row_win[0]] &&
+//       squares[row_win[0]] === squares[row_win[1]] &&
+//       squares[row_win[0]] === squares[row_win[2]]
+//     ) {
+//       winner = squares[row_win[0]];
+//     }
+//     return null;
+//   });
+
+//   return winner;
+
+//   // if (
+//   //     squares[win[x][0]] &&
+//   //     squares[win[x][0]] === squares[win[x][1]] &&
+//   //     squares[win[x][0]] === squares[win[x][2]]
+//   //   ) {
+//   //     return squares[win[x][0]];
+//   //   }
+//   //   return null;
+
+//   //   const calWin = win.map((win_x) => {
+//   //     win_x.map(() => {
+//   //       if (
+//   //         squares[win[0]] &&
+//   //         squares[win[0]] === squares[win[1]] &&
+//   //         squares[win[0]] === squares[win[2]]
+//   //       ) {
+//   //         return squares[win[0]];
+//   //       }
+//   //       return null;
+//   //     });
+//   //   });
+// };
+
+const winList = [
+  // 가로 → ←
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+
+  // 세로 ↑↓
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+
+  // 대각선 - ↘ ↖
+  [0, 4, 8],
+
+  // 대각선 - ↙ ↗
+  [2, 4, 6],
+];
+
+const calcWinner = (squares) => {
+  // const 결과 = 원본.map()
+  // 결과의 배열개수와 원본의 배열개수는 항상 같다
+  // 내용은 map의 return 결과에 따라서 달라진다
+
+  // const 결과 = 원본.filter()
+  // 결과의 배열개수 <= 원본보다 작거나 같다
+  // filter()의 return이 true일 경우에만 결과에 배열을 추가한다
+
+  // 코드에서 비교 결과가 true이면 return true한 것과 같고
+  // 그 때 win의 값이 result에 담기게 된다.
+  // result는 개수가 없거나 1개인 배열이 된다
+  const result = winList.filter((win) => {
+    const [col_0, col_1, col_2] = win;
+    return squares[col_0] && squares[col_0] === squares[col_1] && squares[col_0] === squares[col_2];
+  });
+
+  return result.length && squares[result[0][0]];
+};
+
+export { RenderSquare, calcWinner };
