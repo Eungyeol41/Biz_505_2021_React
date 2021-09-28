@@ -9,7 +9,6 @@ function AddressInput({ address, setAddress, addressList, setAddressList }) {
   const insertList = () => {
     setAddressList([...addressList, address]);
     console.log("hi", addressList);
-    // console.log("list", addressList);
   };
 
   return (
