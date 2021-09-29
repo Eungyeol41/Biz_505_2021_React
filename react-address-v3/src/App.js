@@ -1,9 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import AddressInput from "./comps/AddressInput";
-import AddressList from "./comps/AddressList";
+
 import { useState } from "react";
 import UUID from "react-uuid";
+import { BrowserRouter, Route } from "react-router-dom";
+
+import { AddressList, AddressInput, MainNav, Home } from "./comps";
 
 function App() {
   // 주소 1개의 데이터를 저장할 state 선언하기
@@ -24,13 +26,19 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-      <AddressInput stateGroup={stateGroup} />
-      <AddressList addrBook={addrBook} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+        </header>
+        <MainNav />
+        {/* <AddressInput stateGroup={stateGroup} /> */}
+        {/* <AddressList addrBook={addrBook} /> */}
+        <Route path="/" component={Home} exact />
+        <Route path="/input" component={() => <AddressInput stateGroup={stateGroup} />} />
+        <Route path="/list" component={() => <AddressList addrBook={addrBook} />} />
+      </div>
+    </BrowserRouter>
   );
 }
 

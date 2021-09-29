@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -37,12 +43,29 @@
   }
 }
 
-table,
-tr,
-th,
-td {
-  text-align: center;
-  border: 1px solid #61dafb;
-  border-collapse: collapse;
-  margin: 2rem auto;
+div.start {
+  width: 100vw;
+  height: 50vh;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.main {
+  width: 70%;
+  height: 70%;
+  background-color: brown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.level_1 {
+  width: 70%;
+  height: 70%;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
