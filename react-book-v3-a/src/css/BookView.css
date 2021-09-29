@@ -1,0 +1,13 @@
+div.view_div {
+  width: 80vw;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  padding: 0.7rem;
+  display: flex;
+}
+
+div.view_div div {
+  flex: 1;
+  border: 1px solid #ddd;
+  margin: 15px;
+}

@@ -1,0 +1,31 @@
+div.bookInsert {
+  width: 70%;
+  margin: 2rem auto;
+  padding: 3rem;
+  border: 1px solid #ddd;
+}
+
+div.insert_div {
+  width: 80%;
+  margin: 0 auto;
+}
+
+div.insert_div label,
+input {
+  margin: 5px;
+}
+
+div.insert_div label {
+  display: inline-block;
+  width: 20%;
+  text-align: right;
+}
+
+div.insert_div input {
+  width: 70%;
+}
+
+div button {
+  width: 25%;
+  border: none;
+}
