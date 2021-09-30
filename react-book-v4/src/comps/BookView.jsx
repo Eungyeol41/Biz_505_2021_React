@@ -27,6 +27,7 @@ function BookView() {
 
   return (
     <div className="view_div" style={viewStyle}>
+      <p style={pStyle}>ID : {book.b_id} </p>
       <p style={pStyle}>도서명 : {book.b_name} </p>
       <p style={pStyle}>장르 : {book.b_genre} </p>
     </div>

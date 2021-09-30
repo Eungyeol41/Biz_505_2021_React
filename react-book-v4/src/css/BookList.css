@@ -1,0 +1,28 @@
+table.book_list,
+tr,
+th,
+td {
+  border: 1px solid;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+table.book_list {
+  margin: 2rem auto;
+  width: 70%;
+}
+
+table.book_list {
+  width: 80vw;
+  border: 1px solid #ddd;
+  margin: 10px auto;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table.book_list th,
+table.book_list td {
+  padding: 10px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #777;
+}
