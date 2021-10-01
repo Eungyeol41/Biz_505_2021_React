@@ -28,4 +28,9 @@ div.input_div input {
 div button {
   width: 25%;
   border: none;
+  background-color: cadetblue;
+}
+
+div button:hover {
+  cursor: pointer;
 }

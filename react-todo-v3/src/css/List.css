@@ -1,0 +1,32 @@
+table {
+  width: 512px;
+  margin: 0 auto;
+}
+
+table td {
+  padding: 0.7rem;
+}
+
+div.todo_item {
+  width: 512px;
+  display: flex;
+  justify-content: space-evenly;
+
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.todo_item:hover {
+  background-color: whitesmoke;
+}
+
+.todo_delete {
+  color: red;
+  font-weight: 600;
+  opacity: 0;
+}
+
+.todo_item:hover .todo_delete {
+  opacity: 1;
+}

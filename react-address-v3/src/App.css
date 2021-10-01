@@ -37,14 +37,6 @@
   }
 }
 
-div.main_body {
-  background: url("./image/sky.jpg");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: center;
-  background-size: contain;
-}
-
 table,
 tr,
 th,
@@ -53,7 +45,10 @@ td {
   border: 1px solid olive;
   border-collapse: collapse;
   margin: 2rem auto;
-  padding: 0.3rem 1.5rem;
+}
+
+table {
+  width: 70%;
 }
 
 tr:hover {
