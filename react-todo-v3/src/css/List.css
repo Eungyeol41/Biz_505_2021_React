@@ -10,7 +10,7 @@ table td {
 div.todo_item {
   width: 512px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 
   cursor: pointer;
   transition: 0.2s;
@@ -29,4 +29,18 @@ div.todo_item {
 
 .todo_item:hover .todo_delete {
   opacity: 1;
+}
+
+.todo_delete,
+.todo_id,
+.todo_mark {
+  flex: 1;
+}
+.todo_text {
+  flex: 3;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: #adb5bd;
 }
