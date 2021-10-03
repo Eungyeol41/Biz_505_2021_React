@@ -1,0 +1,26 @@
+nav.main_nav {
+  display: flex;
+  background-color: teal;
+  color: white;
+}
+
+nav.main_nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.8rem;
+  margin: 0 auto;
+
+  flex: 1;
+}
+
+nav.main_nav a:hover {
+  border-bottom: 2px solid;
+}
+
+nav.main_nav a.active {
+  /* background & color */
+  background-color: mediumturquoise;
+  color: white;
+  font-weight: bold;
+}

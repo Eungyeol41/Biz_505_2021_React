@@ -3,8 +3,6 @@ import "./App.css";
 import TodoMain from "./comps/TodoMain";
 import TodoInput from "./comps/TodoInput";
 import TodoList from "./comps/TodoList";
-import MyButton from "./comps/MyButton";
-import CompButton from "./comps/CompButton";
 
 function App() {
   return (

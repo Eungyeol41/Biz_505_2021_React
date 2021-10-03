@@ -1,22 +1,39 @@
-div.todo_input {
+div.addressInput {
   margin: 0 auto;
 }
 
-div.todo_input input,
-div.todo_input button {
+div.addressInput label,
+div.addressInput input,
+div.addressInput button {
+  display: inline-block;
   padding: 0.5rem;
   margin: 0.5rem;
 }
 
-div.todo_input input {
+div.addressInput label {
+  font-weight: bold;
+  display: inline-block;
+  width: 216px;
+  text-align: right;
+}
+
+div.addressInput input {
   border: none;
   border-bottom: 1px solid #282c34;
 
-  width: 20%;
+  width: 432px;
 }
 
-div.todo_input button {
-  width: 20%;
+div.input_p {
+  display: flex;
+}
+
+div.input_p p {
+  flex: 1;
+}
+
+div.addressInput button {
+  width: 216px;
   border: none;
   background-color: #282c34;
   color: white;

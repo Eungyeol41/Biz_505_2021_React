@@ -1,12 +1,11 @@
 import React from "react";
 import AppContextProvider from "../context/AppContextProvider";
 
-function TodoMain({ header, form, children }) {
+function AddressMain({ form, children }) {
   return (
     <AppContextProvider>
-      <div className="todo_main">
-        <main className="todo_main_layout">
-          <header>{header}</header>
+      <div className="addr_main">
+        <main className="addr_main_layout">
           <section>{form}</section>
           <section>{children}</section>
         </main>
@@ -15,4 +14,4 @@ function TodoMain({ header, form, children }) {
   );
 }
 
-export default TodoMain;
+export default AddressMain;
