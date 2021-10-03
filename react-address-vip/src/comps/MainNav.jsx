@@ -12,7 +12,9 @@ function MainNav() {
       <NavLink to="/input" activeClassName="active">
         INPUT ADDRESS
       </NavLink>
-      <NavLink to="/list">ADDRESS LIST</NavLink>
+      <NavLink to="/list" activeClassName="active">
+        ADDRESS LIST
+      </NavLink>
     </nav>
   );
 }

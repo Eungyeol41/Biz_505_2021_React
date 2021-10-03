@@ -9,21 +9,9 @@ function AddressList() {
   const viewList = addrBook.map((item, index) => {
     return <AddressItem addr={item} key={item.a_id} index={index} />;
   });
-  /*
-  const viewList = addrBook.map((addr, index) => {
-    return (
-      <tr>
-        <td>{index + 1}</td>
-        <td>{addr.a_name}</td>
-        <td>{addr.a_addr}</td>
-        <td>{addr.a_tel}</td>
-        <td>{addr.a_age}</td>
-      </tr>
-    );
-  });
-*/
+
   return (
-    <table>
+    <table className="addr_table">
       <thead>
         <tr>
           <th>ID</th>

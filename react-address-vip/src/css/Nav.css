@@ -19,7 +19,6 @@ nav.main_nav a:hover {
 }
 
 nav.main_nav a.active {
-  /* background & color */
   background-color: mediumturquoise;
   color: white;
   font-weight: bold;
