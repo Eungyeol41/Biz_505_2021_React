@@ -9,11 +9,11 @@ function MainNav() {
       <NavLink to="/" exact activeClassName="active">
         MAIN
       </NavLink>
-      <NavLink to="/input" activeClassName="active">
-        INPUT ADDRESS
-      </NavLink>
       <NavLink to="/list" activeClassName="active">
         ADDRESS LIST
+      </NavLink>
+      <NavLink to="/detail" activeClassName="active">
+        ADDRESS DETAIL
       </NavLink>
     </nav>
   );

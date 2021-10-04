@@ -7,6 +7,8 @@ import AddressMain from "./comps/AddressMain";
 import AddressInput from "./comps/AddressInput";
 import AddressList from "./comps/AddressList";
 import MainNav from "./comps/MainNav";
+import AddressDetail from "./comps/AddressDetail";
+import Home from "./comps/Home";
 
 function App() {
   return (
@@ -23,12 +25,8 @@ function App() {
             <AddressList />
           </AddressMain>
         </Route>
-        <Route path="/input">
-          <AddressMain form={<AddressInput />}></AddressMain>
-        </Route>
-        <Route path="/list">
-          <AddressMain form={<AddressList />}></AddressMain>
-        </Route>
+        <Route path="/list">{/* <AddressList /> */}</Route>
+        <Route path="/detail">{/* <AddressDetail /> */}</Route>
       </div>
     </BrowserRouter>
   );
