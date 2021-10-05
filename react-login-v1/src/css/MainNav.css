@@ -1,0 +1,12 @@
+nav {
+  display: flex;
+  background-color: lightseagreen;
+  color: white;
+  justify-content: space-around;
+}
+
+nav a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+}
