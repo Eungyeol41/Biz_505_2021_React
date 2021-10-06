@@ -1,9 +1,9 @@
 import { createContext, useContext, useState } from "react";
 
-const AppContext = createContext();
+const UserContext = createContext();
 
 export const useUserContext = () => {
-  return useContext(AppContext);
+  return useContext(UserContext);
 };
 
 const UserContextProvider = ({ children }) => {
@@ -14,7 +14,7 @@ const UserContextProvider = ({ children }) => {
     email: "",
   });
   const providerData = { user, setUser };
-  return <AppContext.Provider value={providerData}>{children}</AppContext.Provider>;
+  return <UserContext.Provider value={providerData}>{children}</UserContext.Provider>;
 };
 
 export default UserContextProvider;

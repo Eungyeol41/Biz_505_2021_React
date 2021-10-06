@@ -1,11 +1,24 @@
 import express from "express";
 import passport from "passport";
+import users from "../models/user.js";
 
+// const users = require("../models/user.js");
 const router = express.Router();
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   res.send("respond with a resource");
+});
+// http://localhost/users로 응답
+router.post("/", (req, res) => {
+  // 로그인이 수행되어서 session이 유효한 경우에는 req.user 속성이 존재한다
+  // 로그인이 안 되거나 session이 유효하지 않으면 req.user가 없다
+  if (req.user) {
+    console.log("Session OK");
+    res.json(req.user);
+  } else {
+    res.json([]);
+  }
 });
 
 /**
@@ -46,7 +59,15 @@ router.post("/join", (req, res) => {
   console.log("Password", password);
   console.log("E-mail", email);
 
-  res.json("Good!");
+  // 방법 1
+  const userVO = new users(req.body);
+  userVO.save((err, data) => {
+    res.json(data);
+  });
+
+  // 방법 2
+  //   users.create(req.body);
+  //   res.json("성공");
 });
 
 export default router;

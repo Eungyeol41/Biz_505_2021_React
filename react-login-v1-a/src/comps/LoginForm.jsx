@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
+import { useUserContext } from "../context/UserContextProvider";
 import "../css/Login.css";
 
 const LoginForm = () => {
+  const { setUser } = useUserContext();
   const [account, setAccount] = useState({
     userId: "",
     password: "",
@@ -32,8 +34,9 @@ const LoginForm = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "http://localhost:3000",
       },
-      //   credentials: "same-origin",
+      credentials: "include",
       body: JSON.stringify({
         userId: account.userId,
         password: account.password,
@@ -48,9 +51,15 @@ const LoginForm = () => {
     //		if (res?.ok)
     // res가 정상(null, undefined가 아닐 경우 .ok 속성을 검사해라!)
     // null로 인한 오류를 방지하는 코드.
+    console.log("res", res);
+    if (res.status === 401) {
+      alert("ID 또는 비밀번호를 확인해주세요");
+    }
+
     if (res?.ok) {
       // user 정보를 뽑고
-      const user = await res.json();
+      const resultUser = await res.json();
+      console.log("userId", account.userId);
       // 일치하는 정보가 있는 지 확인
       // const user = users.find((item) => item.userId === account.userId);
       // 화살표 함수는 return을 해주거나 {}를 빼거나
@@ -58,17 +67,18 @@ const LoginForm = () => {
       //     return item.userId === account.userId;
       //   });
 
-      console.log("user", user);
+      console.log("user", resultUser);
       // ID, PW가 없는 지를 각각 확인
-      if (!user) {
-        alert("Id가 없음!!");
+      if (!resultUser?.userId) {
+        alert("없는 ID입니다");
         return;
       }
-      if (user.password != account.password) {
+      if (resultUser.password != account.password) {
         alert("PW 오류");
         return;
       }
       alert("Login Success");
+      setUser(resultUser);
     }
   };
 

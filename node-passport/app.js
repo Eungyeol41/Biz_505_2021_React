@@ -14,9 +14,11 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 
+import mongoose from "mongoose";
+
 import session from "express-session";
 import passport from "passport";
-import passportConfig from "./modules/passport.js";
+import passportConfig from "./modules/PassportConfig.js";
 
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
@@ -25,12 +27,27 @@ import cors from "cors";
 
 const app = express();
 
+const mongoLocalURL = "mongodb://localhost:27017/users";
+const dbConn = mongoose.connection;
+
+dbConn.once("open", () => {
+  console.log("MongoDB OK!!");
+});
+dbConn.on("error", () => {
+  console.error();
+});
+
+mongoose.connect(mongoLocalURL);
+// mongoose.connect("mongodb://localhost:27017");
+
 const whiteURL = ["http://localhost:3000"];
 const corsOption = {
   origin: (origin, callback) => {
     const isWhiteURL = whiteURL.indexOf(origin) !== -1;
     callback(null, isWhiteURL);
   },
+  // 로그인 다음 세션정보를 클라이언트에게 전달하겠다는 의미
+  credentials: true,
 };
 
 app.use(cors(corsOption));
@@ -48,13 +65,33 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join("./public")));
 
-app.use(session({ secret: "aa1234", resave: true, saveUninitialized: false }));
+// 하루동안 유지 ... 밀리초 * 60초 * 60분 * 24시간
+const oneDay = 1000 * 60 * 60 * 24;
+// SESSION 활성화
+app.use(
+  session({
+    secret: "aa1234",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      httpOnly: false,
+      maxAge: oneDay,
+    },
+  })
+);
 app.use(passport.initialize()); // passport start
 app.use(passport.session()); // passport와 session 연결
+passportConfig();
+
+// response 할 때 session에 담긴 값을 Client로 전송하기 위한 Option 설정
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  next();
+});
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-passportConfig();
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -1,45 +1,49 @@
-import React from "react";
-import { useUserContext } from "../context/UserContextProvider";
+import React, { useState } from "react";
 import "../css/JoinForm.css";
 
 function JoinForm() {
-  const { user, setUser } = useUserContext();
+  const [joinUser, setJoinUser] = useState({
+    userId: "",
+    password: "",
+    re_password: "",
+    email: "",
+  });
 
   const onChangeAccount = (e) => {
     const { name, value } = e.target;
-    setUser({ ...user, [name]: value });
+    setJoinUser({ ...joinUser, [name]: value });
   };
 
   const onSubmitAccount = async () => {
-    // if (user.userId === "") {}
-    // user.userId가 false이면
+    // if (joinUser.userId === "") {}
+    // joinUser.userId가 false이면
     // 혹시나 userId가 없는 경우...? 대비
-    if (!user?.userId) {
+    if (!joinUser?.userId) {
       alert("ID를 입력해주세요");
       return;
     }
-    if (!user?.password) {
+    if (!joinUser?.password) {
       alert("비밀번호를 입력해주세요");
       return;
     }
-    if (!user?.re_password) {
+    if (!joinUser?.re_password) {
       alert("비밀번호 확인을 입력해주세요");
       return;
     }
-    // if (user?.password !== user?.re_password) {
-    if (user.password !== user.re_password) {
+    // if (joinUser?.password !== joinUser?.re_password) {
+    if (joinUser.password !== joinUser.re_password) {
       alert("비밀번호가 일치하지 않습니다");
       return;
     }
-    if (!user?.email) {
+    if (!joinUser?.email) {
       alert("E-mail을 입력해주세요");
       return;
     }
 
     const joinData = {
-      userId: user.userId,
-      password: user.password,
-      email: user.email,
+      userId: joinUser.userId,
+      password: joinUser.password,
+      email: joinUser.email,
     };
 
     const response = await fetch("http://localhost:8080/users/join", {
@@ -53,6 +57,7 @@ function JoinForm() {
     if (response.ok) {
       const json = await response.json();
       alert(JSON.stringify(json));
+      console.log(JSON.stringify(json));
     }
   };
   return (
@@ -60,28 +65,28 @@ function JoinForm() {
       <input
         type="text"
         name="userId"
-        value={user.userId}
+        value={joinUser.userId}
         onChange={onChangeAccount}
         placeholder="아이디를 입력해주세요"
       />
       <input
         type="password"
         name="password"
-        value={user.password}
+        value={joinUser.password}
         onChange={onChangeAccount}
         placeholder="비밀번호를 입력해주세요"
       />
       <input
         type="password"
         name="re_password"
-        value={user.re_password}
+        value={joinUser.re_password}
         onChange={onChangeAccount}
         placeholder="비밀번호를 한 번 더 입력해주세요"
       />
       <input
         type="email"
         name="email"
-        value={user.email}
+        value={joinUser.email}
         onChange={onChangeAccount}
         placeholder="E-mail을 입력해주세요"
       />
