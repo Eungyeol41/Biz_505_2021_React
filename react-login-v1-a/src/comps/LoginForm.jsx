@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { useUserContext } from "../context/UserContextProvider";
 import "../css/Login.css";
+import MyButton from "../mycustom/MyButton";
 
 const LoginForm = () => {
   const { setUser } = useUserContext();
@@ -8,6 +10,8 @@ const LoginForm = () => {
     userId: "",
     password: "",
   });
+
+  const history = useHistory();
 
   const userID = useRef();
   const userPW = useRef();
@@ -79,6 +83,7 @@ const LoginForm = () => {
       }
       alert("Login Success");
       setUser(resultUser);
+      history.replace("/");
     }
   };
 
@@ -92,7 +97,10 @@ const LoginForm = () => {
         placeholder="비밀번호를 입력해주세요"
         onChange={onChange}
       />
-      <button onClick={onLogin}>Login</button>
+      {/* <button onClick={onLogin}>Login</button> */}
+      <MyButton backgroundColor="cadetblue" onBtnClick={onLogin}>
+        Login
+      </MyButton>
     </div>
   );
 };

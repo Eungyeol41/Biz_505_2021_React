@@ -3,6 +3,7 @@ import "./App.css";
 import TodoMain from "./comps/TodoMain";
 import TodoInput from "./comps/TodoInput";
 import TodoList from "./comps/TodoList";
+import Login from "./comps/Login";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       </TodoMain>
       {/* <MyButton /> */}
       {/* <CompButton onClick={() => alert("Let's Go Home!!")}>Home</CompButton> */}
+      <Login />
     </div>
   );
 }
