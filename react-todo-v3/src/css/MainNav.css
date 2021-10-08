@@ -1,0 +1,21 @@
+ul.main_nav {
+  list-style: none;
+  display: flex;
+  background-color: lavender;
+
+  padding: 0.5rem;
+  font-weight: 700;
+}
+
+ul.main_nav li {
+  flex: 1;
+}
+
+ul.main_nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul.main_nav a:hover {
+  cursor: pointer;
+}

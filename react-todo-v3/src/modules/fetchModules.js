@@ -1,4 +1,4 @@
-const fetchLogin = (userId, password) => {
+const fetchLogin = async (userId, password) => {
   const response = await fetch("http://localhost:8080/users/login", {
     method: "POST",
     headers: {
@@ -12,10 +12,15 @@ const fetchLogin = (userId, password) => {
     }),
   });
 
+  console.log("response", response);
+
   if (response?.ok) {
+    console.log("response OK");
     const resultUser = response.json();
-    setUser(resultUser);
+    return resultUser;
   } else {
     return [];
   }
 };
+
+export { fetchLogin };

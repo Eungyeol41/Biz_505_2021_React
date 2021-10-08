@@ -24,6 +24,7 @@ function MainComp() {
       : { id: 4, title: "회원가입", link: "/join" },
     { id: 5, title: "회원 정보 보기", link: "/admin" },
   ];
+
   return (
     <MainNav navList={navList}>
       <Route path="/" exact>
