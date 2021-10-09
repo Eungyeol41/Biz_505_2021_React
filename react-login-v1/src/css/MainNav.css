@@ -1,12 +1,14 @@
-nav {
+ul.nav {
   display: flex;
-  background-color: lightseagreen;
+  list-style: none;
+  background-color: cadetblue;
   color: white;
-  justify-content: space-around;
 }
 
-nav a {
+ul.nav a {
   display: inline-block;
+  padding: 8px;
   text-decoration: none;
+  margin: 8px;
   color: inherit;
 }

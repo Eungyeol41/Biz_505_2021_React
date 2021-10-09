@@ -1,13 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink, Route } from "react-router-dom";
 
 import "../css/MainNav.css";
+import JoinForm from "./JoinForm";
+import LoginForm from "./LoginForm";
 
-function MainNav({ menu }) {
-  const menu_nav = menu.map((nav) => {
-    return <NavLink to={nav.link}>{nav.text}</NavLink>;
+const align_right = {
+  marginLeft: "auto",
+};
+
+function MainNav({ children, navList }) {
+  const nav_items = navList.map((nav) => {
+    return (
+      <li className="nav_item" key={nav.id} style={nav.align && align_right}>
+        <NavLink to={nav.link}>{nav.title}</NavLink>
+      </li>
+    );
   });
-  return <nav className="main_nav">{menu_nav}</nav>;
+  return (
+    <BrowserRouter>
+      <ul className="nav">{nav_items}</ul>
+      {children}
+    </BrowserRouter>
+  );
 }
 
 export default MainNav;
