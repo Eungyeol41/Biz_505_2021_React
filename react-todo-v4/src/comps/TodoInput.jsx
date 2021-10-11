@@ -10,10 +10,10 @@ function TodoInput() {
     <div className="todo_input">
       <input
         ref={textId}
-        placeholder="오늘 할 일"
         value={todo.t_text}
         onChange={onChange}
         onKeyPress={onKeyPress}
+        placeholder="오늘 할 일"
       />
       <button className="todo_insert" onClick={onClick}>
         추가
