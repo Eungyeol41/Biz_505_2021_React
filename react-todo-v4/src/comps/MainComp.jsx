@@ -1,8 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import UserContextProvider, {
-  useUserContext,
-} from "../context/UserContextProvider";
+import UserContextProvider from "../context/UserContextProvider";
 import Login from "./Login";
 import MainNav from "./MainNav";
 import TodoInput from "./TodoInput";

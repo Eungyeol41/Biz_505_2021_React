@@ -1,0 +1,27 @@
+ul.main_nav {
+  list-style: none;
+  display: flex;
+  background-color: teal;
+
+  padding: 0.5rem;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+
+ul.main_nav li {
+  flex: 1;
+}
+
+ul.main_nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul.main_nav a:hover {
+  cursor: pointer;
+}
+
+ul.main_nav a.active {
+  border-bottom: 2px solid gold;
+}

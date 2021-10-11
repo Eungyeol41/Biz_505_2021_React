@@ -121,7 +121,9 @@ const AppContextProvider = ({ children }) => {
     onCompClick,
   };
 
-  return <AppContext.Provider value={providerData}>{children}</AppContext.Provider>;
+  return (
+    <AppContext.Provider value={providerData}>{children}</AppContext.Provider>
+  );
 };
 
 export default AppContextProvider;
