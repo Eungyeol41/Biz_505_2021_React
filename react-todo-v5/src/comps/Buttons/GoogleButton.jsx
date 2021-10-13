@@ -1,10 +1,12 @@
 import "../../css/GoogleButton.css";
 import { useEffect, useRef } from "react";
 import { useUserContext } from "../../context";
+import { useHistory } from "react-router-dom";
 
 function GoogleButton() {
   const buttonRef = useRef();
   const { setUser } = useUserContext();
+  const history = useHistory();
 
   const googleResponse = (result) => {
     const profile = result.getBasicProfile();
@@ -19,6 +21,7 @@ function GoogleButton() {
       login_source: "GOOGLE",
     });
     alert(email + " 님 반갑습니다");
+    history.replace("/");
   };
 
   /**

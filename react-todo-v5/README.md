@@ -15,6 +15,24 @@
 
 - User 정보를 관리할 Context를 생성
 
+## Git Page에 Deploy하기
+
+- git-hub를 사용하여 react project 공개하기
+- git page는 static 방식의 web hosting
+
+1. Git repository 만들기
+   > TO_DO_LIST
+2. local project를 repository로 설정하기
+   > git init
+3. local project push 준비
+   > git add .
+4. local project commit
+   > git commit -m "first commit"
+5. 원격, local repository 연결
+   > git remote add origin https://github.com/Eungyeol41/TO_DO_LIST.git
+6. git에 push하기
+   > git push origin master
+
 # 합성이란 무엇인가
 
 - 일반적인 프로그래밍은 한개의 모듈을 만들고 하위의 여러 모듈에서 가져다 사용하는 개념이 보통이다.
